@@ -1,0 +1,10 @@
+backend/target/
+backend/run/*.log
+backend/run/*.pid
+backend/uploads-test/
+backend/certs/
+frontend/node_modules/
+runtime/*.png
+deploy-stage-*/
+*.tar.gz
+config/supplier.env

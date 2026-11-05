@@ -1,0 +1,16 @@
+[Unit]
+Description=Changde duck trace supplier backend
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=yuan
+Group=yuan
+Environment=ROOT=/home/yuan/supplier-trace
+ExecStart=/bin/bash -lc 'source /home/yuan/supplier-trace/config/supplier.env; cd /home/yuan/supplier-trace/backend; exec /usr/bin/java -jar trace-backend-1.0.0.jar --server.port=8080'
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

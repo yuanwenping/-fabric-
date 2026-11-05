@@ -1,0 +1,16 @@
+[Unit]
+Description=Changde duck trace supplier frontend
+After=supplier-trace-backend.service
+Wants=supplier-trace-backend.service
+
+[Service]
+Type=simple
+User=yuan
+Group=yuan
+Environment=ROOT=/home/yuan/supplier-trace
+ExecStart=/bin/bash -lc 'source /home/yuan/supplier-trace/config/supplier.env; exec /usr/bin/python3 /home/yuan/supplier-trace/frontend/gateway.py --host 0.0.0.0 --port 5173 --static-dir /home/yuan/supplier-trace/frontend/dist --api-target http://127.0.0.1:8080'
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

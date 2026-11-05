@@ -1,0 +1,18 @@
+# Backend
+backend/target/
+backend/uploads/
+backend/logs/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Runtime
+*.log
+.env
+.idea/
+.vscode/
+
+# Fabric material copied from the local test network
+backend/src/main/resources/fabric/
+.fabric-import/

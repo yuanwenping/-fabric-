@@ -1,0 +1,86 @@
+:root {
+  font-family: "Microsoft YaHei", "Source Han Sans SC", sans-serif;
+  color: #241d18;
+  background: #f7f0e4;
+  font-synthesis: none;
+  --brand: #6a2e24;
+  --brand-dark: #2b1a15;
+  --amber: #c98a3b;
+  --cream: #f7f0e4;
+  --paper: #fffaf2;
+  --muted: #8b7767;
+  --line: #e8daca;
+  --success: #456756;
+  --danger: #b54235;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(201, 138, 59, 0.12), transparent 28rem),
+    #f7f0e4;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.el-button--primary {
+  --el-button-bg-color: var(--brand);
+  --el-button-border-color: var(--brand);
+  --el-button-hover-bg-color: #813b2f;
+  --el-button-hover-border-color: #813b2f;
+  --el-button-active-bg-color: #54241d;
+}
+
+.el-card {
+  --el-card-border-color: var(--line);
+  --el-card-border-radius: 16px;
+  background: rgba(255, 250, 242, 0.94);
+}
+
+.page-title {
+  margin: 0;
+  font-family: "Source Han Serif SC", "SimSun", serif;
+  font-size: 28px;
+  letter-spacing: 0.02em;
+}
+
+.page-subtitle {
+  color: var(--muted);
+  margin: 8px 0 24px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+
+.mono {
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 12px;
+  word-break: break-all;
+}
+
+@media (max-width: 760px) {
+  .page-title {
+    font-size: 23px;
+  }
+}

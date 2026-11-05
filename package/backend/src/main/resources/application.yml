@@ -1,0 +1,72 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: changde-duck-trace
+  datasource:
+    url: ${DB_URL:jdbc:mysql://127.0.0.1:3306/changde_trace?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:Yuan15347361610}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/data.sql
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 120MB
+  jackson:
+    time-zone: Asia/Shanghai
+    default-property-inclusion: non_null
+
+app:
+  jwt-secret: ${JWT_SECRET:ChangdeDuckTrace2027SecretMustBeAtLeast32BytesLong}
+  jwt-expire-hours: 12
+  upload-dir: ${UPLOAD_DIR:./uploads}
+  cors-origin: ${CORS_ORIGIN:http://localhost:5173,http://127.0.0.1:5173,http://192.168.13.1:5173}
+  bootstrap-admin:
+    username: ${BOOTSTRAP_ADMIN_USERNAME:platform_admin}
+    password: ${BOOTSTRAP_ADMIN_PASSWORD:Admin@15347361610}
+
+fabric:
+  enabled: ${FABRIC_ENABLED:true}
+  channel: ${FABRIC_CHANNEL:tracechannel}
+  chaincode: ${FABRIC_CHAINCODE:tracecc}
+  endpoint-orderer: ${FABRIC_ORDERER_ENDPOINT:grpcs://192.168.116.144:7050}
+  orderer-authority: ${FABRIC_ORDERER_AUTHORITY:orderer.example.com}
+  orderer-tls: classpath:fabric/orderer-tls-ca.pem
+  organizations:
+    SupplierMSP:
+      endpoint: ${FABRIC_SUPPLIER_ENDPOINT:grpcs://192.168.116.144:7051}
+      authority: peer0.supplier.example.com
+      cert: classpath:fabric/SupplierMSP/cert.pem
+      key: classpath:fabric/SupplierMSP/key.pem
+      tls: classpath:fabric/SupplierMSP/tls-ca.pem
+    ProcessorMSP:
+      endpoint: ${FABRIC_PROCESSOR_ENDPOINT:grpcs://192.168.116.144:8051}
+      authority: peer0.processor.example.com
+      cert: classpath:fabric/ProcessorMSP/cert.pem
+      key: classpath:fabric/ProcessorMSP/key.pem
+      tls: classpath:fabric/ProcessorMSP/tls-ca.pem
+    LogisticsMSP:
+      endpoint: ${FABRIC_LOGISTICS_ENDPOINT:grpcs://192.168.116.144:9051}
+      authority: peer0.logistics.example.com
+      cert: classpath:fabric/LogisticsMSP/cert.pem
+      key: classpath:fabric/LogisticsMSP/key.pem
+      tls: classpath:fabric/LogisticsMSP/tls-ca.pem
+    RetailerMSP:
+      endpoint: ${FABRIC_RETAILER_ENDPOINT:grpcs://192.168.116.144:10051}
+      authority: peer0.retailer.example.com
+      cert: classpath:fabric/RetailerMSP/cert.pem
+      key: classpath:fabric/RetailerMSP/key.pem
+      tls: classpath:fabric/RetailerMSP/tls-ca.pem
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

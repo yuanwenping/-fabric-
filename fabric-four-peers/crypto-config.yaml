@@ -1,0 +1,51 @@
+OrdererOrgs:
+  - Name: Orderer
+    Domain: example.com
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: orderer
+
+PeerOrgs:
+  - Name: Supplier
+    Domain: supplier.example.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - localhost
+        - 192.168.116.144
+    Users:
+      Count: 1
+
+  - Name: Processor
+    Domain: processor.example.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - localhost
+        - 192.168.116.144
+    Users:
+      Count: 1
+
+  - Name: Logistics
+    Domain: logistics.example.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - localhost
+        - 192.168.116.144
+    Users:
+      Count: 1
+
+  - Name: Retailer
+    Domain: retailer.example.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - localhost
+        - 192.168.116.144
+    Users:
+      Count: 1
